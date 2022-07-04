@@ -148,6 +148,13 @@
         background-color: #002a9c;
     }
     /****** OPTION LINKS ******/
+    #prod-link {
+        color: black;
+        text-decoration: none;
+    }
+    #prod-link:hover {
+        color: #0645AD;
+    }
     a.option-links {
         color: #0645AD;
         text-decoration: none;
@@ -155,6 +162,7 @@
     a.option-links:hover {
         text-decoration: underline;
     }
+
 
     /* For mobile phones: 
     @media only screen and (max-width: 480px) {
@@ -265,13 +273,12 @@
                 <tbody>
                     {% for product in products %}
                     <tr>
-                        <td data-label="Product Name" class="td-align-left" id="prod-name">{{product.insProd_Name}}</td>
+                        <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="/products/{{product.id}}" id="prod-link">{{product.insProd_Name}}</a></td>
                         <td data-label="Product ID">{{product.id}}</td>
                         <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
                         <td data-label="Stock">{{product.insProd_stockQty}}</td>
                         <td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>
-                        <td data-label="Options" id="options"><a href="/products/{{product.id}}" class="option-links">View</a><br>
-                        <a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
+                        <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
                         <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td>
                     </tr>
                     {% endfor %}
