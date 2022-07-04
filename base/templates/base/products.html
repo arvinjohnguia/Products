@@ -1,0 +1,283 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+        background-color: #FFFAF4;
+    }
+
+    .main-wrapper {
+        padding: 100px 0;
+    }
+
+    .container {
+        font-family: 'Montserrat', sans-serif;
+        max-width: 860px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /***** TABLE CONTAINER *****/
+    .prodtable-container {
+        max-width: 800px;
+        width: 100%;
+        margin: 20px auto;
+        padding: 40px 30px;
+        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
+        background-color: white;
+    }
+
+    /***** PRODUCT TITLE|FILTER|SEARCH|EXPORT *****/
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+    }
+
+    .labels1 {
+        padding: 0;
+        width: 20%;
+        float: left;
+    }
+    
+    .labels2 {
+        padding: 0;
+        width: 80%;
+        text-align: right;
+        float: right;
+    }
+
+    /***** TABLE STYLE *****/
+    table { 
+        border-spacing: 1; 
+        border-collapse: collapse; 
+        background: white;
+        overflow: hidden;
+        max-width: 800px; 
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* TABLE HEADER */
+    thead tr th {
+        font-weight: 400;
+        font-size: 16px;
+    }
+    thead tr { 
+        height: 50px;
+        background: #FEE2C5;
+        color: #535353;
+    }
+    table th:first-child{
+        border-radius: 8px 0 0 8px;
+    }
+    table th:last-child{
+        border-radius: 0 8px 8px 0;
+    }
+
+    /* TABLE BODY */
+    tbody tr { 
+        font-family: 'Montserrat', sans-serif;
+        height: 150px; 
+        border-bottom:  .5px solid #c9c9c9;
+    }
+    tbody tr:last-child {
+        border: none;
+    }
+    
+    td, th {
+        text-align: center;
+        padding: 5px 10px;
+    }
+    .td-align-left {
+        text-align: left;
+    }
+
+    #prod-name {
+        font-weight: 600;
+    }
+    #description {
+        width: auto;
+    }
+    #price::before {
+        content: '₱';
+    }
+
+    /* BLUE BUTTON */
+    .buttons {
+        font-weight: 600;
+        text-align: right;
+    }
+
+    a.blue-btn:link, a.blue-btn:visited {
+        background-color: #7FB5FF;
+        color: white;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        border: solid 2px #7FB5FF;
+    }
+    a.blue-btn:hover, a.blue-btn:active {
+        border: solid 2px #7FB5FF;
+        background-color: white;
+        color: #7FB5FF;
+    }
+
+    /* EXPORT BUTTON */
+    #export-btn {
+        font-weight: 600;
+    }
+    a.export-btn:link, a.export-btn:visited {
+        background-color: #001D6E;
+        color: white;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+    }
+    a.export-btn:hover, a.export-btn:active {
+        background-color: #002a9c;
+    }
+    /****** OPTION LINKS ******/
+    a.option-links {
+        color: #0645AD;
+        text-decoration: none;
+    }
+    a.option-links:hover {
+        text-decoration: underline;
+    }
+
+    /* For mobile phones: 
+    @media only screen and (max-width: 480px) {
+        * { 
+            font-size: 13px;
+        }
+        table {
+            max-width: 480px;
+        }
+    }
+*/
+    @media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  .td-align-left {
+        text-align: right;
+    }
+
+    #prod-name {
+        font-weight: normal;
+    }
+    #description {
+        width: auto;
+    }  
+    .option-links {
+        display: block;
+    }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+    
+</style>
+
+<div class="main-wrapper">
+    <!-- PRODUCT TABLE -->
+    <div class="container">
+        <div class="buttons">
+            <a href="{% url 'create-product' %}" class="blue-btn">+ Add Product</a>
+        </div>
+        <div class="prodtable-container">
+            <div class="labels-container">
+                <ul>
+                    <div class="labels1">
+                        <li><h2>Products</h2></li>
+                    </div>
+                    
+                    <div class="labels2">
+                        <li><p>Filter</p></li>
+                        <li>
+                            <form method="GET" action="{% url 'products' %}">
+                                <input type="text" name="q" placeholder="Search...">
+                            </form>
+                        </li>
+                    <li><a href="#" class="export-btn">Export Table</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product ID</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Options</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td data-label="Product Name" class="td-align-left" id="prod-name">{{product.insProd_Name}}</td>
+                        <td data-label="Product ID">{{product.id}}</td>
+                        <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
+                        <td data-label="Stock">{{product.insProd_stockQty}}</td>
+                        <td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>
+                        <td data-label="Options" id="options"><a href="/products/{{product.id}}" class="option-links">View</a><br>
+                        <a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
+                        <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

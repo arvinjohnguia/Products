@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<h2>{{product.insProd_Name}}</h2>
+<ul>
+    <li>Product Name: {{product.insProd_Name}}</li>
+    <li>ID: {{product.id}}</li>
+    <li>Price: {{product.insProd_Price}}</li>
+    <li>Stock: {{product.insProd_stockQty}}</li>
+    <li>Description: {{prod.insProd_Desc}}</li>
+</ul>
+
+{% endblock content %}
