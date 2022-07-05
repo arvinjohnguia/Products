@@ -5,11 +5,12 @@
     }
 
     .main-wrapper {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
         padding: 100px 0;
     }
 
     .container {
-        font-family: 'Montserrat', sans-serif;
         max-width: 860px;
         width: 100%;
         margin: 0 auto;
@@ -30,19 +31,15 @@
         list-style-type: none;
         padding: 0;
     }
-    li {
+    li.top-labels {
         display: inline-block;
     }
 
     .labels1 {
-        padding: 0;
-        width: 20%;
         float: left;
     }
     
     .labels2 {
-        padding: 0;
-        width: 80%;
         text-align: right;
         float: right;
     }
@@ -105,8 +102,14 @@
     #prod-name {
         font-weight: 600;
     }
+    /* PRODUCT CATEGORY */
+    #category {
+        max-width: 100px;
+        width: auto;
+    }
     /* PRODUCT DESCRIPTION */
     #description {
+        max-width: 150px;
         width: auto;
     }
     /* PRODUCT IN PESO */
@@ -141,6 +144,7 @@
         font-weight: 600;
     }
     a.export-btn:link, a.export-btn:visited {
+        font-size: 14px;
         background-color: #001D6E;
         color: white;
         padding: 6px 15px;
@@ -166,6 +170,36 @@
     }
     a.option-links:hover {
         text-decoration: underline;
+    }
+
+    /*************** INDIVIDUAL PRODUCT INFORMATION PAGE ***************/
+    /* CONTAINER */
+    .prod-info {
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 40px 30px;
+        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
+        background-color: white;
+    }
+    /* GO BACK BUTTON */
+    a.go-back:link, a.go-back:visited {
+        background-color: #001D6E;
+        color: white;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    a.go-back:hover, a.go-back:active {
+        background-color: #002a9c;
+    }
+    /* IMAGE */
+    .prod-img2 {
+        height: 210px;
+        width: 210px;
     }
 
 

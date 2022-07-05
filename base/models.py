@@ -10,10 +10,11 @@ class Category(models.Model):
 
 class Product(models.Model):
     insProd_Name = models.CharField(max_length=200, verbose_name="Product Name")
-    Cat_Name = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    Cat_Name = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, verbose_name="Category")
     insProd_Desc = models.TextField(null=True, blank=True, verbose_name="Description")
     insProd_stockQty = models.IntegerField(verbose_name="Stock Quantity")
     insProd_Price = models.FloatField(verbose_name="Price")
+    insProd_Image = models.ImageField(default="placeholder-image.png", null=True, verbose_name="Product Image")
     #insProd_totalUsed = models.IntegerField(verbose_name="Total Used")
     #insProd_dateRestocked = models.DateTimeField(auto_now=True)
     #insProd_DateUsed

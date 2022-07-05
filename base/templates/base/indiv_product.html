@@ -1,14 +1,19 @@
-{% extends 'main.html' %}
+{% extends 'main_products.html' %}
 
 {% block content %}
-
-<h2>{{product.insProd_Name}}</h2>
-<ul>
-    <li>ID: {{product.id}}</li>
-    <li>Category: {{product.Cat_Name}}</li>
-    <li>Price: {{product.insProd_Price}}</li>
-    <li>Stock: {{product.insProd_stockQty}}</li>
-    <li>Description: {{product.insProd_Desc}}</li>
-</ul>
+<div class="main-wrapper">
+    <div class="prod-info">
+        <a href="{{request.META.HTTP_REFERER}}" class="go-back">Go Back</a><br>
+        {% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" class="prod-img2" />{% endif %}
+        <h2>{{product.insProd_Name}}</h2>
+        <ul>
+            <li>ID: {{product.id}}</li>
+            <li>Category: {{product.Cat_Name}}</li>
+            <li>Price: {{product.insProd_Price|floatformat:2}}</li>
+            <li>Stock: {{product.insProd_stockQty}}</li>
+            <li>Description: {{product.insProd_Desc}}</li>
+        </ul>
+    </div>
+</div>
 
 {% endblock content %}
