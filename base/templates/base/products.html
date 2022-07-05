@@ -262,7 +262,8 @@
                 <thead>
                     <tr>
                         <th scope="col">Product Name</th>
-                        <th scope="col">Product ID</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Price</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Description</th>
@@ -275,6 +276,7 @@
                     <tr>
                         <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="/products/{{product.id}}" id="prod-link">{{product.insProd_Name}}</a></td>
                         <td data-label="Product ID">{{product.id}}</td>
+                        <td data-label="Category">{{product.Cat_Name}}</td>
                         <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
                         <td data-label="Stock">{{product.insProd_stockQty}}</td>
                         <td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>
