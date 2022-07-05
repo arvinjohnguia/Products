@@ -1,4 +1,6 @@
-{% extends 'main.html' %}
+{% load static %}
+
+{% extends 'products.html' %}
 
 {% block content %}
 
@@ -275,7 +277,7 @@
                     {% for product in products %}
                     <tr>
                         <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="/products/{{product.id}}" id="prod-link">{{product.insProd_Name}}</a></td>
-                        <td data-label="Product ID">{{product.id}}</td>
+                        <td data-label="ID">{{product.id}}</td>
                         <td data-label="Category">{{product.Cat_Name}}</td>
                         <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
                         <td data-label="Stock">{{product.insProd_stockQty}}</td>
