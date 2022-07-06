@@ -96,11 +96,12 @@
         height: 80px;
         width: 80px;
         vertical-align: middle;
-        margin-right: 10px;
     }
     /* PRODUCT NAME */
     #prod-name {
         font-weight: 600;
+        max-width: 100px;
+        width: auto;
     }
     /* PRODUCT CATEGORY */
     #category {
@@ -171,37 +172,6 @@
     a.option-links:hover {
         text-decoration: underline;
     }
-
-    /*************** INDIVIDUAL PRODUCT INFORMATION PAGE ***************/
-    /* CONTAINER */
-    .prod-info {
-        max-width: 500px;
-        width: 100%;
-        margin: 0 auto;
-        padding: 40px 30px;
-        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
-        background-color: white;
-    }
-    /* GO BACK BUTTON */
-    a.go-back:link, a.go-back:visited {
-        background-color: #001D6E;
-        color: white;
-        padding: 6px 15px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        border-radius: 5px;
-        margin-bottom: 20px;
-    }
-    a.go-back:hover, a.go-back:active {
-        background-color: #002a9c;
-    }
-    /* IMAGE */
-    .prod-img2 {
-        height: 210px;
-        width: 210px;
-    }
-
 
     /* For mobile phones: 
     @media only screen and (max-width: 480px) {

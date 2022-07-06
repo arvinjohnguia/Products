@@ -1,0 +1,62 @@
+<style>
+    .discount-header {
+        text-align: center;
+    }
+    .shop-wrapper {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1024;
+    }
+    .shop-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+    .prod-grid {
+        
+    }
+    .shop-product {
+
+    }
+    img {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+{% block content %}
+<div class="discount-header">
+    <h2>Member Exclusive</h2>
+    <p>15% OFF everything + EXTRA $10 OFF for plus status</p>
+    <p>Not a member? <a href="#">Join now to shop.</a></p>
+</div>
+
+<div class="shop-wrapper">
+    <div class="shop-container">
+        <div>
+            <!-- BROWSE CATEGORIES -->
+            <h2>Categories</h2>
+            <hr>
+            <a href="{% url 'shop' %}"><h3>All Products</h3></a>
+            {% for category in categories %}
+                <div>
+                    <a href="{% url 'shop' %}?q={{category.Cat_Name}}">{{category.Cat_Name}}</a>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="prod-grid">
+            <div class="shop-product">
+                {% for product in products %}
+                <!-- PRODUCT IMAGE -->
+                <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                <!-- PRODUCT NAME AND PRICE -->
+                <a href="/products/{{product.id}}">{{product.insProd_Name}}</a>
+                {{product.insProd_Price|floatformat:2}}
+            
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

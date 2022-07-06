@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.db.models import Q
 
-from .models import Product
+from .models import Product, Category
 from .forms import ProductForm
 
 # Create your views here.
@@ -9,13 +9,29 @@ from .forms import ProductForm
 def home(request):
     return render(request, 'base/home.html')
 
+def shop(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    products = Product.objects.filter(
+        Q(Cat_Name__Cat_Name__icontains=q) |
+        Q(insProd_Name__icontains=q) 
+    )
+
+
+    categories = Category.objects.all()
+    
+    context= {'categories': categories, 'products': products}
+    return render(request, 'base/shop.html', context)
+
 def products(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     products = Product.objects.all()
+    
     search = Product.objects.filter(
+        Q(Cat_Name__Cat_Name__icontains=q) |
         Q(id__icontains=q) |
         Q(insProd_Name__icontains=q)
     )
+
     context = {'products': products, 'products': search}
     return render(request, 'base/products.html', context)
 
@@ -40,7 +56,7 @@ def updateProduct(request, pk):
     form = ProductForm(instance=product)
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             return redirect('products')

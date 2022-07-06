@@ -1,0 +1,42 @@
+    /*************** INDIVIDUAL PRODUCT INFORMATION PAGE ***************/
+    /* CONTAINER */
+    .prod-info {
+        max-width: 350px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 40px 30px;
+        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
+        background-color: white;
+    }
+    /* GO BACK BUTTON */
+    a.go-back:link, a.go-back:visited {
+        background-color: #001D6E;
+        color: white;
+        padding: 6px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    a.go-back:hover, a.go-back:active {
+        background-color: #002a9c;
+    }
+    /* IMAGE */
+    div.prod-img2-container {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .prod-img2 {
+        height: 210px;
+        width: 210px;
+    }
+    /* DETAILS TEXT */
+    .prod-details-title {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .prod-details {
+        color: #2e2e2e;
+        font-size: 20px;
+    }
