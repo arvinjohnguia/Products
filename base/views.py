@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.db.models import Q
 
 from .models import Product, Category
-from .forms import ProductForm
+from .forms import ProductForm, StatusForm
 
 # Create your views here.
 
@@ -31,9 +31,9 @@ def products(request):
         Q(insProd_Name__icontains=q)
     )
     
-    form = ProductForm()
+    form = StatusForm()
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = StatusForm(request.POST)
         if form.is_valid():
             form.save()
 

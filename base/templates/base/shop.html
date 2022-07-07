@@ -1,27 +1,4 @@
-<style>
-    .discount-header {
-        text-align: center;
-    }
-    .shop-wrapper {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 1024;
-    }
-    .shop-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-    }
-    .prod-grid {
-        
-    }
-    .shop-product {
-        display: inline;
-    }
-    img {
-        width: 150px;
-        height: 150px;
-    }
-</style>
+{% extends 'main.html' %}
 
 {% block content %}
 <div class="discount-header">
@@ -45,17 +22,15 @@
         </div>
         
         <div class="prod-grid">
-            <div class="shop-product">
                 {% for product in products %}
-
+                <div class="indiv-prod-grid">
                     <!-- PRODUCT IMAGE -->
-                    <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                    <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img class="shop-images" src="{{product.insProd_Image.url}}" />{% endif %}</a><br>
                     <!-- PRODUCT NAME AND PRICE -->
-                    <a href="/products/{{product.id}}">{{product.insProd_Name}}</a>
+                    <a href="/products/{{product.id}}">{{product.insProd_Name}}</a><br>
                     {{product.insProd_Price|floatformat:2}} 
-        
+                </div>
                 {% endfor %}
-            </div>
         </div>
     </div>
 </div>
