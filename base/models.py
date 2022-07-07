@@ -1,6 +1,10 @@
 from django.db import models
 
 # Create your models here.
+class IsActiveManager(models.Manager):
+    def get_queryset(self):
+
+        return super(IsActiveManager, self).get_queryset().filter(is_active=True)
 
 class Category(models.Model):
     Cat_Name = models.CharField(max_length=200, verbose_name="Category")
@@ -15,6 +19,9 @@ class Product(models.Model):
     insProd_stockQty = models.IntegerField(verbose_name="Stock Quantity")
     insProd_Price = models.FloatField(verbose_name="Price")
     insProd_Image = models.ImageField(default="placeholder-image.png", upload_to="product_images", null=True, verbose_name="Product Image")
+    is_active = models.BooleanField(default=True)
+    objects = models.Manager() #For All Records  
+    active_objects = IsActiveManager() #For Active Records Only
     #insProd_totalUsed = models.IntegerField(verbose_name="Total Used")
     #insProd_dateRestocked = models.DateTimeField(auto_now=True)
     #insProd_DateUsed

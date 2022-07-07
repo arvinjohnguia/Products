@@ -15,7 +15,7 @@
         
     }
     .shop-product {
-
+        display: inline;
     }
     img {
         width: 150px;
@@ -47,12 +47,13 @@
         <div class="prod-grid">
             <div class="shop-product">
                 {% for product in products %}
-                <!-- PRODUCT IMAGE -->
-                <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
-                <!-- PRODUCT NAME AND PRICE -->
-                <a href="/products/{{product.id}}">{{product.insProd_Name}}</a>
-                {{product.insProd_Price|floatformat:2}}
-            
+
+                    <!-- PRODUCT IMAGE -->
+                    <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                    <!-- PRODUCT NAME AND PRICE -->
+                    <a href="/products/{{product.id}}">{{product.insProd_Name}}</a>
+                    {{product.insProd_Price|floatformat:2}} 
+        
                 {% endfor %}
             </div>
         </div>

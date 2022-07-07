@@ -11,11 +11,10 @@ def home(request):
 
 def shop(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    products = Product.objects.filter(
+    products = Product.active_objects.filter(
         Q(Cat_Name__Cat_Name__icontains=q) |
         Q(insProd_Name__icontains=q) 
     )
-
 
     categories = Category.objects.all()
     
@@ -31,8 +30,14 @@ def products(request):
         Q(id__icontains=q) |
         Q(insProd_Name__icontains=q)
     )
+    
+    form = ProductForm()
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
 
-    context = {'products': products, 'products': search}
+    context = {'products': products, 'products': search, 'form': form}
     return render(request, 'base/products.html', context)
 
 def indivproduct(request, pk):

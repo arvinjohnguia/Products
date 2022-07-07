@@ -38,6 +38,7 @@
                         <th scope="col">Price</th>
                         <th scope="col">Stock</th>
                         <!--<th scope="col">Description</th>-->
+                        <th scope="col">Status</th>
                         <th scope="col">Options</th>
                     </tr>
                 </thead>
@@ -53,6 +54,7 @@
                         <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
                         <td data-label="Stock">{{product.insProd_stockQty}}</td>
                         <!--<td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>-->
+                        <td><form method="POST" action="">{{form.is_active}}</form></td>
                         <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
                         <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td>
                     </tr>

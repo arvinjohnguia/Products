@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'base.apps.BaseConfig',
+    'django_toggle_switch_widget',
 ]
 
 MIDDLEWARE = [
