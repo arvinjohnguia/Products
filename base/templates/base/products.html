@@ -45,7 +45,7 @@
 
                 <tbody>
                     {% for product in products %}
-                    <a>
+                    <tr>
                         <!-- TABLE BODY -->
                         <td><a href="/products/{{product.id}}" id="prod-link">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" class="prod-img" />{% endif %}</a></td>
                         <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="/products/{{product.id}}" id="prod-link">{{product.insProd_Name}}</a></td>
@@ -57,6 +57,8 @@
                         <td><form method="POST" action="">{% csrf_token %}{{form.is_active}}</form></td>
                         <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
                         <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td>
+                        {% empty %}
+                        <td colspan="8">No results found.</td>
                     </tr>
                     {% endfor %}
                 </tbody>

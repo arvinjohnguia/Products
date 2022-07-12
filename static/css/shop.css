@@ -1,5 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    body {
+        background-color: #ffffff;
+    }
+
+    .main-wrapper {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+        padding: 100px 0;
+    }
+
+    .container {
+        max-width: 860px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
 /* DISCOUNT MESSAGE HEADER */
 .discount-header {
+    font-family: 'Montserrat', sans-serif;
     background-color: #fff0df;
     text-align: center;
     padding: 15px 0;
@@ -8,7 +27,8 @@
 
 /* CONTAINER FOR ALL */
 .shop-wrapper {
-    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto 100px;
     width: 100%;
     max-width: 1024px;
 }
@@ -17,23 +37,35 @@
 .shop-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
 }
 /* CONTAINER FOR PRODUCTS */
 .prod-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 250px;
+    grid-auto-rows: 300px;
     grid-gap: 1.5rem;
     grid-auto-flow: row;
 }
-/* INDIVIDUAL PRODUCTS */
+/***** INDIVIDUAL PRODUCTS *****/
+/* CONTAINER */
 .indiv-prod-grid{
-    /*background: rgb(146, 82, 82);*/
+    background: white;
     text-align: center;
     justify-content: center;
     align-items: center;
+    transition: all .1s ease-in-out; 
+    border: solid 1px white;
 }
-.shop-images {
+.indiv-prod-grid:hover {
+    transform: scale(1.1);
+    border: solid 1px rgb(243, 243, 243);
+
+}
+/* IMAGE */
+.shop-images img{
+    margin-top: 20px;
+    margin-bottom: 5px;
     width: 170px;
     height: 170px;
 }

@@ -1,0 +1,66 @@
+{% extends 'main_shop.html' %}
+
+{% block content %}
+
+<div class="main-wrapper">
+    <div class="container">
+        <!-- BREADCRUMB LINKS -->
+        <div class="shop-links-container">
+            <a class="shop-links" href="{% url 'shop' %}">Shop</a> / <a class="shop-links" href="{% url 'shop' %}?q={{product.Cat_Name}}">{{product.Cat_Name}}</a> / <a id="current-link" href="">{{product.insProd_Name}}</a>
+        </div>
+
+        <!-- IMG AND DETAILS CONTAINER -->
+        <div class="shop-indiv-prod-container">
+            <!-- IMAGE -->
+            <div class="shop-img-container">
+                {% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" class="shop-indiv-prod-img" />{% endif %}
+            </div>
+
+            <!-- PRODUCT DETAILS -->
+            <div class="shop-indiv-prod-details">
+                <!-- PRODUCT NAME -->
+                <div class="details-prodname">
+                    <h2>{{product.insProd_Name}}</h2>
+                </div>
+
+                <!-- PRICE -->
+                <div class="details-price">
+                    <label id="price">{{product.insProd_Price|floatformat:2}}</label>
+                </div>
+                
+                <!-- DESCRIPTION -->
+                <div class="details-desc">
+                    <label>{{product.insProd_Desc}}</label>
+                </div>
+                
+                <!-- STOCK QUANTITY -->
+                <div class="details-stock">
+                    <label>{{product.insProd_stockQty}} </label><label>in stock</label>
+                </div>
+                <div class="number-input">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                        <input class="quantity" min="1" name="quantity" value="1" type="number">
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                </div>
+                
+                <!-- ADD TO CART -->
+                <div class="details-add-to-cart">
+                    <button type="submit" value="Submit">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- BROWSE OTHER PRODUCTS -->
+        <label class="browse-other-prod">Browse Other Products</label>
+
+        <div class="browse-grid">
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+{% endblock content%}

@@ -21,6 +21,11 @@ def shop(request):
     context= {'categories': categories, 'products': products}
     return render(request, 'base/shop.html', context)
 
+def shopIndivProduct(request, pk):
+    product = Product.objects.get(id=pk)
+    context = {'product': product}
+    return render(request, 'base/shop_indiv_product.html', context)
+
 def products(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     products = Product.objects.all()
@@ -40,7 +45,7 @@ def products(request):
     context = {'products': products, 'products': search, 'form': form}
     return render(request, 'base/products.html', context)
 
-def indivproduct(request, pk):
+def indivProduct(request, pk):
     product = Product.objects.get(id=pk)
     context = {'product': product}
     return render(request, 'base/indiv_product.html', context)
