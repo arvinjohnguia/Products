@@ -1,111 +1,3 @@
-<style>
-    .category-container {
-        max-width: 220px;
-    }
-        .category-container h2 {
-            font-size: 20px;
-            color:#001D6E;
-            text-transform: uppercase;
-        }
-        .category-container hr {
-            border-top: 0.5px solid rgb(228, 228, 228);
-        }
-    
-    .cat-links-container a {
-        font-size: 15px;
-        color: black;
-        text-decoration: none;
-        margin-bottom: 8px;
-    }
-
-    /* LINKS */
-    .cat-links {
-        display: inline-block;
-        position: relative;
-        color: black;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-    .cat-links:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        transform: scaleX(0);
-        height: 1px;
-        bottom: 0;
-        left: 0;
-        background-color: #001D6E;
-        transform-origin: bottom right;
-        transition: transform 0.25s ease-out;
-    }
-    .cat-links:hover:after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
-    .cat-links:hover {
-        cursor: pointer;
-        color: #001D6E;
-    }
-
-    /* PRODUCT NAME */
-    .shop-prodname {
-        height: 40px;
-        width: 170px;
-        margin: 0 auto 5px;
-    }
-    .shop-prodname a {
-        font-size: 15px;
-        color: black;
-        text-decoration: none;
-    }
-        .shop-prodname a:hover {
-            color: rgb(145, 145, 145);
-        }
-    /* PRICE */
-    .shop-price {
-        font-size: 15px;
-        margin-bottom: 5px;
-    }
-        .details-price {
-            color: #001D6E;
-            font-size: 28px;
-            font-weight: 600;
-        }
-        #price::before {
-            content: '₱';
-        }
-    /* ADD TO CART */
-    .shop-cart-btn {
-        font-size: 14px;
-    }
-
-    .section-announcement {
-    display: block;
-    }
-    .AnnouncementBar {
-    white-space: nowrap; 
-    height: 36px; 
-    overflow: hidden;
-    }
-    .AnnouncementBar__Wrapper {
-    display: flex; 
-    justify-content: space-around; 
-    width: 100%;
-    }
-
-    .AnnouncementBar__Wrapper {
-    visibility: initial; 
-    white-space: nowrap; 
-    width: auto;
-    max-width: none; 
-    display: inline-block;
-    margin: 0; 
-    line-height: 36px; 
-    height: 36px; 
-    overflow: hidden;
-    }
-</style>
-
 {% extends 'main_shop.html' %}
 
 {% block content %}
@@ -115,12 +7,6 @@
     <p>Not a member? <a href="#">Join now to shop.</a></p>
 </div>
 
-<section id="section-announcement" data-section-id="announcement" data-section-type="announcement-bar">
-    <div class="AnnouncementBar">
-    <div class="AnnouncementBar__Wrapper "><a href="/collections/sale" class="AnnouncementBar__Content Heading" style="padding-right: 300px;">sale up to 65% off | shop now ></a></div>
-    <div class="AnnouncementBar__Wrapper "><a href="/collections/sale" class="AnnouncementBar__Content Heading" style="padding-right: 300px;">hey hey hey</a></div>
-    </div>
-</section>
 
 <div class="shop-wrapper">
     <div class="shop-container">
@@ -129,9 +15,11 @@
             <h2>Categories</h2>
             <hr>
             
-            <form method="GET" action="{% url 'shop' %}">
-                <input type="text" name="q" placeholder="Search...">
-            </form>
+            <div class="search">
+                <form method="GET" action="{% url 'shop' %}">
+                    <input type="text" name="q" placeholder="Search...">
+                </form>
+            </div>
             
             <div class="cat-links-container">
                 <a href="{% url 'shop' %}"><h3>All Products</h3></a>

@@ -16,7 +16,7 @@
         margin: 0 auto;
     }
     
-/* DISCOUNT MESSAGE HEADER */
+/***** DISCOUNT MESSAGE HEADER *****/
 .discount-header {
     font-family: 'Montserrat', sans-serif;
     background-color: #fff0df;
@@ -24,8 +24,15 @@
     padding: 15px 0;
     margin-bottom: 100px;
 }
-
-/* CONTAINER FOR ALL */
+.discount-header a {
+    color: #7FB5FF;
+    text-decoration: none;
+}
+.discount-header a:hover {
+    color: #001D6E;
+    text-decoration: none;
+}
+/***** CONTAINER FOR ALL *****/
 .shop-wrapper {
     font-family: 'Montserrat', sans-serif;
     margin: 0 auto 100px;
@@ -33,21 +40,71 @@
     max-width: 1024px;
 }
 
-/* CONTAINER FOR CATEGORIES AND PRODUCTS */
+/***** CONTAINER FOR CATEGORIES AND PRODUCTS *****/
 .shop-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
     column-gap: 20px;
 }
-/* CONTAINER FOR PRODUCTS */
+/* CATEGORY */
+.category-container {
+    max-width: 220px;
+}
+    .category-container h2 {
+        font-size: 20px;
+        color:#001D6E;
+        text-transform: uppercase;
+    }
+    .category-container hr {
+        border-top: 0.5px solid rgb(228, 228, 228);
+    }
+
+/* CATEGORY LINKS CONTAINER */
+.cat-links-container a {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+/* LINKS */
+.cat-links {
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.cat-links:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #001D6E;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.cat-links:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.cat-links:hover {
+    cursor: pointer;
+    color: #001D6E;
+}
+
+/***** INDIVIDUAL PRODUCTS *****/
+/* GRID CONTAINER FOR PRODUCTS */
 .prod-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 300px;
+    grid-auto-rows: 320px;
     grid-gap: 1.5rem;
     grid-auto-flow: row;
 }
-/***** INDIVIDUAL PRODUCTS *****/
+
 /* CONTAINER */
 .indiv-prod-grid{
     background: white;
@@ -68,4 +125,50 @@
     margin-bottom: 5px;
     width: 170px;
     height: 170px;
+}
+/* PRODUCT NAME */
+.shop-prodname {
+    height: 40px;
+    width: 170px;
+    margin: 0 auto 5px;
+}
+.shop-prodname a {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+}
+    .shop-prodname a:hover {
+        color: rgb(145, 145, 145);
+    }
+/* PRICE */
+.shop-price {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+    .details-price {
+        color: #001D6E;
+        font-size: 28px;
+        font-weight: 600;
+    }
+    #price::before {
+        content: '₱';
+    }
+/* ADD TO CART */
+.shop-cart-btn {
+    font-size: 14px;
+    font-weight: 500;
+}
+.shop-cart-btn button {
+    font-family: 'Montserrat', sans-serif;
+    color: #7FB5FF;
+    background-color: transparent;
+    border: 1.5px solid #7FB5FF;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.shop-cart-btn button:hover {
+    color: white;
+    background-color: #7FB5FF;
+    border: 1.5px solid #7FB5FF;
 }

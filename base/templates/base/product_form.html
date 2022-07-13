@@ -1,84 +1,12 @@
-{% extends 'main.html' %}
+{% extends 'main_products.html' %}
 {% block content %}
-
-<style> 
-    .form-style{
-        font-family: 'Montserrat', sans-serif;
-        width: 350px;
-        margin: 0 auto;
-        font-size: 16px;
-        background-color: white;
-        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
-        padding: 40px 40px;
-    }
-    .form-style input[type=submit],
-    .form-style input[type=button],
-    .form-style input[type=text],
-    .form-style input[type=number],
-    .form-style select,
-    .form-style textarea
-    {
-        font-size: 16px;
-        color: black;
-    
-    }
-    .form-style label {
-        font-size: 16px;
-        font-weight: 600;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .form-style input[type=text], 
-    .form-style input[type=number],
-    .form-style select {
-        background: transparent;
-        border: 1px solid #83A4C5;
-        width: 100%;
-        outline: none;
-        padding: 5px 5px;
-    }
-    .form-style textarea {
-        font-family: 'Montserrat', sans-serif;
-        background: transparent;
-        border: 1px solid #83A4C5;
-        width: 100%;
-        outline: none; 
-        overflow: hidden;
-        resize: none;
-        height: 80px;
-        padding: 5px 5px;
-    }
-    
-    .form-style textarea:focus, 
-    .form-style input[type=text]:focus,
-    .form-style input[type=number]:focus,
-    .form-style select:focus {
-        box-shadow: 0 0 5px hwb(207 71% 0%);
-	    border: 1px solid #7FB5FF;
-    }
-    
-    .form-style input[type=submit],
-    .form-style input[type=button] {
-        cursor: pointer;
-        background: #001D6E;
-        border: none;
-        padding: 8px 10px;
-        border-radius: 5px;
-        color: white;
-        font-weight: 500;
-    }
-    .form-style input[type=submit]:hover,
-    .form-style input[type=button]:hover{
-        background: #002281;
-    }
-    </style>
 
 <div class="main-wrapper">
     <div class="form-style">
-        <h2>Edit Product</h2>
+        <h2>Product Form</h2>
         <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
+            
             {{form.as_p}}
             {{form.media}}
             <input type="submit" value="Submit" onclick="return confirm('Are you sure?');">  

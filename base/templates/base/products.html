@@ -19,9 +19,11 @@
                         <ul>    
                             <li class="top-labels">Filter</li>
                             <li class="top-labels">
+                            <div class="search">
                                 <form method="GET" action="{% url 'products' %}">
                                     <input type="text" name="q" placeholder="Search...">
                                 </form>
+                            </div>            
                             </li>
                             <li class="top-labels"><a href="#" class="export-btn">Export Table</a></li>
                         </ul>
@@ -37,8 +39,8 @@
                         <th scope="col">Category</th>
                         <th scope="col">Price</th>
                         <th scope="col">Stock</th>
-                        <!--<th scope="col">Description</th>-->
-                        <th scope="col">Status</th>
+                            <!--<th scope="col">Description</th>-->
+                            <!--<th scope="col">Status</th>-->
                         <th scope="col">Options</th>
                     </tr>
                 </thead>
@@ -52,11 +54,18 @@
                         <td data-label="ID">{{product.id}}</td>
                         <td data-label="Category" id="category">{{product.Cat_Name}}</td>
                         <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
+                        <!-- if stock greater than 0 -->
+                        {% if product.insProd_stockQty > 0 %}
                         <td data-label="Stock">{{product.insProd_stockQty}}</td>
-                        <!--<td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>-->
-                        <td><form method="POST" action="">{% csrf_token %}{{form.is_active}}</form></td>
+                        {% endif %}
+                        <!-- if stock equal to 0 -->
+                        {% if product.insProd_stockQty == 0 %}
+                        <td data-label="Stock">Out of Stock</td>
+                        {% endif %}
+                            <!-- <td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>
+                            <td><form method="POST" action="">{% csrf_token %}{{form.is_active}}</form></td> -->
                         <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
-                        <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td>
+                            <!-- <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td> -->
                         {% empty %}
                         <td colspan="8">No results found.</td>
                     </tr>
@@ -66,4 +75,31 @@
         </div>
     </div>
 </div>
+
+<!-- BACK TO TOP BUTTON -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+<!-- BACK TO TOP SCRIPT -->
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+        
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        }
+    </script>
 {% endblock content %}
