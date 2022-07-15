@@ -48,6 +48,9 @@
     margin-bottom: 20px;
 }
 
+select#id_ProdType_Name {
+    width: 363px;
+}
 select#id_Cat_Name {
     width: 363px;
 }
@@ -110,6 +113,7 @@ overflow:hidden;
 vertical-align:middle;
 transition: background 0.3s;
 box-sizing:border-box;
+cursor: pointer;
 }
 input[type="checkbox"]:after{
 content:'';

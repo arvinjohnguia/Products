@@ -30,6 +30,7 @@
     .prod-img2 {
         height: 210px;
         width: 210px;
+        object-fit: cover;
     }
     /* DETAILS TEXT */
     .prod-details-title {

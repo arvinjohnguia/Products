@@ -22,18 +22,32 @@
             </div>
             
             <div class="cat-links-container">
-                <a href="{% url 'shop' %}"><h3>All Products</h3></a>
-                {% for category in categories %}
+                <!-- ALL PRODUCTS -->
+                <a href="{% url 'shop' %}"><h3 id="all-products">All Products</h3></a>
+                <!-- PRODUCT TYPE CATEGORY -->
+                <div class="prod-type-container">
+                    <h3>Product Type</h3>
+                    {% for producttype in prod_type %}
+                    <div>
+                        <a class="cat-links" href="{% url 'shop' %}?q={{producttype.ProdType_Name}}">{{producttype.ProdType_Name}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- BRAND AND PROMO CATEGORY -->
+                <div class="brand-promo-container">
+                    <h3>Brand and Promos</h3>
+                    {% for category in categories %}
                     <div>
                         <a class="cat-links" href="{% url 'shop' %}?q={{category.Cat_Name}}">{{category.Cat_Name}}</a>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
             
-        </div>
-        
+        </div>   
+
         <div class="prod-grid">
-                {% for product in products %}
+                {% for product in page_prod %}
                 <div class="indiv-prod-grid">
                     <!-- IMAGE -->
                     <div class="shop-images">
@@ -54,12 +68,35 @@
                     <div class="shop-cart-btn">
                         <button type="submit" value="Submit">Add to Cart</button>    
                     </div>
-
-                    
                 </div>
-                {% empty %}
-                    <label>No results found.</label>
+
+                    {% empty %}
+                        <label>No results found.</label>
+
                 {% endfor %}
+        </div>
+
+        <div>
+            
+        </div>
+        <!-- PAGE NAVIGATION -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_prod.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_prod.previous_page_number }}">previous</a>
+                {% endif %}
+                
+                <!-- PAGE INDICATOR -->
+                <span class="current">
+                    Page {{ page_prod.number }} of {{ page_prod.paginator.num_pages }}
+                </span>
+        
+                {% if page_prod.has_next %}
+                    <a href="?page={{ page_prod.next_page_number }}">next</a>
+                    <a href="?page={{ page_prod.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
         </div>
     </div>
 </div>

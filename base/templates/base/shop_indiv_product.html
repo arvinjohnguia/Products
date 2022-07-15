@@ -9,6 +9,11 @@
             <a class="shop-links" href="{% url 'shop' %}">Shop</a> / <a class="shop-links" href="{% url 'shop' %}?q={{product.Cat_Name}}">{{product.Cat_Name}}</a> / <a id="current-link" href="">{{product.insProd_Name}}</a>
         </div>
 
+        <!-- GO BACK LINK -->
+        <div class="go-back">
+            <a href="{{request.META.HTTP_REFERER}}"><i class="fa-solid fa-arrow-left"></i> Go back</a>
+        </div>
+
         <!-- IMG AND DETAILS CONTAINER -->
         <div class="shop-indiv-prod-container">
             <!-- IMAGE -->
@@ -39,7 +44,7 @@
                 </div>
                 <div class="number-input">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                        <input class="quantity" min="1" max="50" name="quantity" value="1" type="number">
+                        <input class="quantity" min="1" max="30" name="quantity" value="1" type="number">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
                 
@@ -52,10 +57,29 @@
 
 
         <!-- BROWSE OTHER PRODUCTS -->
-        <label class="browse-other-prod">Browse Other Products</label>
+        <div class="browse-other-prod">
+            <span>Browse Other Products</span>
+        </div>
 
         <div class="browse-grid">
-
+            {% for product in browse %}
+            <div class="indiv-browse-grid">
+                <!-- IMAGE -->
+                <div class="indiv-shop-images">
+                    <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                </div>
+                
+                <!-- PRODUCT NAME -->
+                <div class="indiv-shop-prodname">
+                    <a href="/shop/{{product.id}}">{{product.insProd_Name}}</a>    
+                </div>
+                
+                <!-- PRICE -->
+                <div class="indiv-shop-price">
+                    <label id="price">{{product.insProd_Price|floatformat:2}} </label>    
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     
