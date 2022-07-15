@@ -35,6 +35,7 @@ class insProduct(models.Model):
     objects = models.Manager() #For All Records  
     active_objects = IsActiveManager() #For Active Records Only
     date_created = models.DateTimeField(default=timezone.now)
+    expiry_date = models.DateTimeField(null=True, blank=False)
     #insProd_totalUsed = models.IntegerField(verbose_name="Total Used")
     #insProd_dateRestocked = models.DateTimeField(auto_now=True)
     #insProd_DateUsed
@@ -57,6 +58,7 @@ class otcProduct(models.Model):
     objects = models.Manager() #For All Records  
     active_objects = IsActiveManager() #For Active Records Only
     date_created = models.DateTimeField(default=timezone.now)
+    expiry_date = models.DateTimeField(null=True, blank=False)
 
     class Meta:
         verbose_name = 'Over-the-Counter Product'

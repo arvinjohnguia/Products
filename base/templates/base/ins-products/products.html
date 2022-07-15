@@ -6,7 +6,7 @@
     <div class="container">
         <!-- BUTTONS -->
         <div class="buttons">
-            <a href="{% url 'create-product' %}" class="blue-btn">+ Add Product</a>
+            <a href="{% url 'ins-create-product' %}" class="blue-btn">+ Add Product</a>
         </div>
         <div class="prodtable-container">
             <div class="labels-container">
@@ -66,7 +66,7 @@
                         {% endif %}
                             <!-- <td data-label="Description" class="td-align-left" id="description">{{product.Prod_Desc}}</td>
                             <td><form method="POST" action="">{% csrf_token %}{{form.is_active}}</form></td> -->
-                        <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
+                        <td data-label="Options" id="options"><a href="{% url 'ins-update-product' product.id %}" class="option-links">Edit</a><br>
 
                         {% empty %}
                         <td colspan="8">No results found.</td>

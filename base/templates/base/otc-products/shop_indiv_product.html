@@ -44,7 +44,7 @@
                 </div>
                 <div class="number-input">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
-                        <input class="quantity" min="1" max="30" name="quantity" value="1" type="number">
+                        <input class="quantity" min="1" max="{{product.Prod_stockQty}}" name="quantity" value="1" type="number">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
                 </div>
                 

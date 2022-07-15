@@ -31,12 +31,14 @@ def shop(request):
     return render(request, 'base/otc-products/shop.html', context)
 
 def shopIndivProduct(request, pk):
-    product = otcProduct.objects.get(id=pk)
+    product = otcProduct.active_objects.get(id=pk)
 
     #BROWSE OTHER PRODUCTS
-    browse = otcProduct.objects.filter(Cat_Name=product.Cat_Name).order_by('?').exclude(id=pk)
-        #.filter(ProdType_Name=product.ProdType_Name)
-        
+    browse = otcProduct.active_objects.filter(
+        Q(Cat_Name=product.Cat_Name) |
+        Q(ProdType_Name=product.ProdType_Name)
+    ).order_by('?').exclude(id=pk)
+
     context = {'product': product, 'browse': browse}
     return render(request, 'base/otc-products/shop_indiv_product.html', context)
 
