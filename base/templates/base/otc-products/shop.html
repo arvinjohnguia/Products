@@ -1,5 +1,6 @@
 {% extends 'main_shop.html' %}
 
+
 {% block content %}
 <div class="discount-header">
     <h2>Member Exclusive</h2>
@@ -66,7 +67,10 @@
                     
                     <!-- ADD TO CART -->
                     <div class="shop-cart-btn">
-                        <button type="submit" value="Submit">Add to Cart</button>    
+                        <!--
+                            <button data-product={{product.id}} data-action="add" class="btn btn-primary add-btn add-btn update-cart" type="submit" value="Submit">Add to Cart</button>    
+                        -->
+                        <button data-product={{product.id}} data-action="add" class="btn btn-primary add-btn add-btn update-cart"> Add to Cart </button>
                     </div>
                 </div>
 

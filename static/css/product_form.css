@@ -68,7 +68,7 @@ select#id_Cat_Name {
     padding: 5px 5px;
 }
 /* DESCRIPTION SCROLL */
-textarea#id_insProd_Desc {
+textarea#id_Prod_Desc {
     overflow-y: scroll;
     height: 80px;
     resize: none;

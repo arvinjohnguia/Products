@@ -1,0 +1,131 @@
+{% extends 'base/otc-products/main-navbar-fake.html' %}
+{% load static %}
+{% block content %}
+<!-- CSS LINK -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/main-2.css' %}">
+
+<!-- BACK TO CART -->
+<a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+<br><br>
+
+<!------------------------------------------------ CHECKOUT ------------------------------------------------>
+<h2><strong>SalOnTheGo | Checkout</strong></h2>
+
+<!---------------------------------------------- CHECK OUT DIV ---------------------------------------------->
+<div class="row">
+    <!------------------------------------------ CUSTOMER INFO ---------------------------------------------->
+    <div class="col-lg-6">
+        <div class="box-element" id="form-wrapper">
+            <form id="form">
+                <!-- USER INFO -->
+                <div class="box-element-1" style="margin-bottom: 10%;">
+                    <p style="font-size: large; color: #001D6E!important;"> &#x1F6C8; <b> &nbsp; CUSTOMER INFORMATION </b></p>
+                    <table width="100%">
+                        <tr width="100%">
+                            <!-- NOTE: Once connected with CUSTOMER TABLE, link with LOGGED-IN CUSTOMER-->
+                            <td width="40%"><p style="color: #001D6E!important; margin-left: 15%;"> FIRST NAME</p></td>
+                            <td width="60%"><p style="color: #001D6E!important; margin-left: 10%;"> CONTACT INFORMATION</p></td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <!-- DATE OF PICKUP -->
+                <div class="cart-row-1">
+                    <div style="flex:2; margin-left: 3%; margin-top: 1%;"><b> &#11044; &nbsp;&nbsp; DATE OF PICKUP</b></div>
+                </div>
+                    <!-- DATE -->
+                    <div class="form-field" style="padding-top: 5%; margin-bottom: 10%;">
+                        <table>
+                            <tr>                            
+                                <th style="padding-left: 5%; margin-top: 5%;"><b>DATE:</b> </th>
+                                <th style="padding-left: 30%; width: 5000px;"><input required class="form-control" type="date" id="datePickerId" name="date" placeholder="Date"></th>
+                            </tr>
+                        </table>
+                    </div>
+                
+                <!--EMAIL AND NAME-->
+                <div id="user-info">
+                    <div class="form-field">
+                        <input required class="form-control" type="text" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-field">
+                        <input required class="form-control" type="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                    
+                <!-- SHIPPING INFO -->
+                <div id="shipping-info">
+                    <br>
+                    <p>Shipping Information:</p>
+                    <hr>
+                    <div class="form-field">
+                        <input class="form-control" type="text" name="address" placeholder="Address..">
+                    </div>
+                    <div class="form-field">
+                        <input class="form-control" type="text" name="city" placeholder="City..">
+                    </div>
+                    <div class="form-field">
+                        <input class="form-control" type="text" name="state" placeholder="State..">
+                    </div>
+                    <div class="form-field">
+                        <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                    </div>
+                </div>
+            <!-- END OF FORMS -->        
+            </form>
+        </div>
+
+        <br>
+        <div class="box-element hidden" id="payment-info">
+            <small>Payment Options</small>
+        </div>
+    </div>
+
+    <!------------------------------------------ ORDER SUMMARY ---------------------------------------------->
+    <div class="col-lg-4">
+        <div class="box-element-2">
+            <h4 style="margin-top: 5%;">Your Order Summary</h4>
+            <hr>
+            {% for item in items %}
+            <div class="cart-row-3">
+                <!--PRODUCT IMAGE-->
+                <div style="flex:2"><img class="row-image" src="{{item.product.Prod_Image.url}}"></div>
+                <!-- PRODUCT NAME -->
+                <div style="flex:2">
+                    <p style="font-size: medium;">
+                        {{item.product.Prod_Name}}
+                    </p>
+                    <!-- ITEM QUANTITY -->
+                    <p style="font-size: large; color: gray;"> x{{item.quantity}} </p>
+                    <!-- PRICE -->
+                    <h5><b> &#x20B1;{{item.product.Prod_Price|floatformat:2}} </b></h5>
+                </div>
+                <hr>
+            </div>
+            {% endfor %}
+
+            <!----------------------------- ORDER TOTAL AND TOTAL ITEMS -------------------------------------->
+            <!-- di siya naliligaw ha, wag niyo ipasok sa cart-row-2 or what, maboboang to -->
+            <h5 style="font-size: large; margin-left:5%; margin-top:5%;">Total Items: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{order.get_cart_items}}</h5>
+            <br>
+            <div class="cart-row-2">
+                <table>
+                    <tr>
+                        <th><h5>Total Amount: &nbsp;&nbsp;</h5></th>
+                        <!-- INLINE CSS FOR ORDER TOTAL -->
+                        <th>
+                            <h5 style="font-size: x-large; float:right; padding-top:2%; margin-left:5%; border-radius: 30px!important;">
+                                <b>&#x20B1;{{order.get_cart_total|floatformat:2}}</b>
+                            </h5>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            
+            <!-- PLACE ORDER BUTTON -->
+            <a href="{% url 'mypurchases' %}"><input id="form-button" class="place-order" type="submit" value="Place Order"></a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

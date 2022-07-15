@@ -1,21 +1,21 @@
 /* BACK TO TOP BUTTON */
 #myBtn {
-    width: 60px;
-    height: 60px;
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: #C4DDFF;
-    color: white;
-    cursor: pointer;
-    padding: 20px;
-    border-radius: 50%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width: 60px !important;
+    height: 60px !important;
+    display: none !important;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 30px !important;
+    z-index: 99 !important;
+    font-size: 18px !important;
+    border: none !important;
+    outline: none !important;
+    background-color: #C4DDFF !important;
+    color: white !important;
+    cursor: pointer !important;
+    padding: 20px !important;
+    border-radius: 50% !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
 }
   
 #myBtn:hover {
@@ -23,35 +23,35 @@
 }
     /***** TABLE CONTAINER *****/
     .prodtable-container {
-        max-width: 800px;
-        width: 100%;
-        margin: 20px auto;
-        padding: 40px 30px;
-        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px;
-        background-color: white;
+        max-width: 800px  !important;
+        width: 100%  !important;
+        margin: 20px auto  !important;
+        padding: 40px 30px  !important;
+        box-shadow: rgba(0, 0, 0, 0.212) 1px 2px 3px  !important;
+        background-color: white  !important;
     }
 
     /***** PRODUCT TITLE|FILTER|SEARCH|EXPORT *****/
     ul {
-        list-style-type: none;
-        padding: 0;
+        list-style-type: none  !important;
+        padding: 0  !important;
     }
     li.top-labels {
-        display: inline-block;
+        display: inline-block  !important;
     }
 
     .labels1 {
-        float: left;
+        float: left  !important;
     }
     
     .labels2 {
-        text-align: right;
-        float: right;
+        text-align: right  !important;
+        float: right  !important;
     }
 
     /* SEARCH BAR */
     .search {
-        padding-right: 5px;
+        padding-right: 5px  !important;
     }
     .search input[type=text]{
         margin-left: 10px;
