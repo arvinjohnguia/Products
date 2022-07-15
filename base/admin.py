@@ -6,8 +6,9 @@ admin.site.site_header = "SalOnTheGo Admin"
 admin.site.site_title = "SalOnTheGo Admin"
 #admin.site.index_title = "Welcome to "
 
-from .models import Product, ProductType, Category
+from .models import insProduct, otcProduct, ProductType, Category
 
-admin.site.register(Product)
+admin.site.register(insProduct)
+admin.site.register(otcProduct)
 admin.site.register(ProductType)
 admin.site.register(Category)

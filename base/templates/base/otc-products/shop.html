@@ -51,17 +51,17 @@
                 <div class="indiv-prod-grid">
                     <!-- IMAGE -->
                     <div class="shop-images">
-                        <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                        <a href="/shop/{{product.id}}">{% if product.Prod_Image %}<img src="{{product.Prod_Image.url}}" />{% endif %}</a>
                     </div>
                     
                     <!-- PRODUCT NAME -->
                     <div class="shop-prodname">
-                        <a href="/shop/{{product.id}}">{{product.insProd_Name}}</a>    
+                        <a href="/shop/{{product.id}}">{{product.Prod_Name}}</a>    
                     </div>
                     
                     <!-- PRICE -->
                     <div class="shop-price">
-                        <label id="price">{{product.insProd_Price|floatformat:2}} </label>    
+                        <label id="price">{{product.Prod_Price|floatformat:2}} </label>    
                     </div>
                     
                     <!-- ADD TO CART -->

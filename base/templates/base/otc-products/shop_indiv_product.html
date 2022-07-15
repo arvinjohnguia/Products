@@ -6,7 +6,7 @@
     <div class="container">
         <!-- BREADCRUMB LINKS -->
         <div class="shop-links-container">
-            <a class="shop-links" href="{% url 'shop' %}">Shop</a> / <a class="shop-links" href="{% url 'shop' %}?q={{product.Cat_Name}}">{{product.Cat_Name}}</a> / <a id="current-link" href="">{{product.insProd_Name}}</a>
+            <a class="shop-links" href="{% url 'shop' %}">Shop</a> / <a class="shop-links" href="{% url 'shop' %}?q={{product.Cat_Name}}">{{product.Cat_Name}}</a> / <a id="current-link" href="">{{product.Prod_Name}}</a>
         </div>
 
         <!-- GO BACK LINK -->
@@ -18,29 +18,29 @@
         <div class="shop-indiv-prod-container">
             <!-- IMAGE -->
             <div class="shop-img-container">
-                {% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" class="shop-indiv-prod-img" />{% endif %}
+                {% if product.Prod_Image %}<img src="{{product.Prod_Image.url}}" class="shop-indiv-prod-img" />{% endif %}
             </div>
 
             <!-- PRODUCT DETAILS -->
             <div class="shop-indiv-prod-details">
                 <!-- PRODUCT NAME -->
                 <div class="details-prodname">
-                    <h2>{{product.insProd_Name}}</h2>
+                    <h2>{{product.Prod_Name}}</h2>
                 </div>
 
                 <!-- PRICE -->
                 <div class="details-price">
-                    <label id="price">{{product.insProd_Price|floatformat:2}}</label>
+                    <label id="price">{{product.Prod_Price|floatformat:2}}</label>
                 </div>
                 
                 <!-- DESCRIPTION -->
                 <div class="details-desc">
-                    <label>{{product.insProd_Desc}}</label>
+                    <label>{{product.Prod_Desc}}</label>
                 </div>
                 
                 <!-- STOCK QUANTITY -->
                 <div class="details-stock">
-                    <label>{{product.insProd_stockQty}} </label><label>in stock</label>
+                    <label>{{product.Prod_stockQty}} </label><label>in stock</label>
                 </div>
                 <div class="number-input">
                     <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
@@ -66,17 +66,17 @@
             <div class="indiv-browse-grid">
                 <!-- IMAGE -->
                 <div class="indiv-shop-images">
-                    <a href="/shop/{{product.id}}">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" />{% endif %}</a>
+                    <a href="/shop/{{product.id}}">{% if product.Prod_Image %}<img src="{{product.Prod_Image.url}}" />{% endif %}</a>
                 </div>
                 
                 <!-- PRODUCT NAME -->
                 <div class="indiv-shop-prodname">
-                    <a href="/shop/{{product.id}}">{{product.insProd_Name}}</a>    
+                    <a href="/shop/{{product.id}}">{{product.Prod_Name}}</a>    
                 </div>
                 
                 <!-- PRICE -->
                 <div class="indiv-shop-price">
-                    <label id="price">{{product.insProd_Price|floatformat:2}} </label>    
+                    <label id="price">{{product.Prod_Price|floatformat:2}} </label>    
                 </div>
             </div>
             {% endfor %}

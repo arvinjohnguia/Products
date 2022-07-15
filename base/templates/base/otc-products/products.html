@@ -13,14 +13,14 @@
                 
                     <!-- TITLE -->
                     <div class="labels1">
-                        <h2>Products</h2>
+                        <h2>OTC Products</h2>
                     </div>
                     <div class="labels2">
                         <ul>    
                             <li class="top-labels">Filter</li>
                             <li class="top-labels">
                             <div class="search">
-                                <form method="GET" action="{% url 'products' %}">
+                                <form method="GET" action="{% url 'otc-products' %}">
                                     <input type="text" name="q" placeholder="Search...">
                                 </form>
                             </div>            
@@ -50,24 +50,24 @@
                     {% for product in page_prod %}
                     <tr>
                         <!-- TABLE BODY -->
-                        <td><a href="/products/{{product.id}}" id="prod-link">{% if product.insProd_Image %}<img src="{{product.insProd_Image.url}}" class="prod-img" />{% endif %}</a></td>
-                        <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="/products/{{product.id}}" id="prod-link">{{product.insProd_Name}}</a></td>
+                        <td><a href="{{product.id}}" id="prod-link">{% if product.Prod_Image %}<img src="{{product.Prod_Image.url}}" class="prod-img" />{% endif %}</a></td>
+                        <td data-label="Product Name" class="td-align-left" id="prod-name"><a href="{{product.id}}" id="prod-link">{{product.Prod_Name}}</a></td>
                         <td data-label="ID">{{product.id}}</td>
                         <td data-label="Product Type" id="category">{{product.ProdType_Name}}</td>
                         <td data-label="Category" id="category">{{product.Cat_Name}}</td>
-                        <td data-label="Price" id="price">{{product.insProd_Price|floatformat:2}}</td>
+                        <td data-label="Price" id="price">{{product.Prod_Price|floatformat:2}}</td>
                         <!-- if stock greater than 0 -->
-                        {% if product.insProd_stockQty > 0 %}
-                        <td data-label="Stock">{{product.insProd_stockQty}}</td>
+                        {% if product.Prod_stockQty > 0 %}
+                        <td data-label="Stock">{{product.Prod_stockQty}}</td>
                         {% endif %}
                         <!-- if stock equal to 0 -->
-                        {% if product.insProd_stockQty == 0 %}
+                        {% if product.Prod_stockQty == 0 %}
                         <td data-label="Stock">Out of Stock</td>
                         {% endif %}
-                            <!-- <td data-label="Description" class="td-align-left" id="description">{{product.insProd_Desc}}</td>
+                            <!-- <td data-label="Description" class="td-align-left" id="description">{{product.Prod_Desc}}</td>
                             <td><form method="POST" action="">{% csrf_token %}{{form.is_active}}</form></td> -->
                         <td data-label="Options" id="options"><a href="{% url 'update-product' product.id %}" class="option-links">Edit</a><br>
-                            <!-- <a href="{% url 'delete-product' product.id %}" class="option-links">Delete</a></td> -->
+                            
                         {% empty %}
                         <td colspan="8">No results found.</td>
                     </tr>

@@ -1,0 +1,17 @@
+{% extends 'main_products.html' %}
+{% block content %}
+
+<div class="main-wrapper">
+    <div class="form-style">
+        <h2>Product Form</h2>
+        <form method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            
+            {{form.as_p}}
+            {{form.media}}
+            <input type="submit" value="Submit" onclick="return confirm('Are you sure?');">  
+        </form>
+    </div>
+</div>      
+
+{% endblock content %}

@@ -1,15 +1,22 @@
 from django.forms import ModelForm #,CheckboxInput
 from django import forms
-from .models import Product
+from .models import otcProduct, insProduct
 
-class ProductForm(ModelForm):
+#OTC PRODUCT FORM
+class otcProductForm(ModelForm):
     class Meta:
-        model = Product
-        fields = ['insProd_Name', 'ProdType_Name', 'Cat_Name', 'insProd_Desc', 'insProd_stockQty', 'insProd_Price', 'insProd_Image', 'is_active']
+        model = otcProduct
+        fields = ['Prod_Name', 'ProdType_Name', 'Cat_Name', 'Prod_Desc', 'Prod_stockQty', 'Prod_Price', 'Prod_Image', 'is_active']
+
+#IN-SALON PRODUCT FORM
+class insProductForm(ModelForm):
+    class Meta:
+        model = insProduct
+        fields = ['Prod_Name', 'ProdType_Name', 'Cat_Name', 'Prod_Desc', 'Prod_stockQty', 'Prod_Price', 'Prod_Image', 'is_active']
 
 class StatusForm(forms.ModelForm):
     class Meta:
-        model = Product
+        model = otcProduct
         fields = ['is_active']
 
         #widgets = {
