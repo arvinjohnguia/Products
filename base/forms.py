@@ -22,3 +22,7 @@ class StatusForm(forms.ModelForm):
         #widgets = {
         #    'is_active': CheckboxInput(attrs={'onchange': 'this.form.submit();'})
         #}
+# CHECK OUT FORM
+# class checkoutForm(ModelForm):
+
+    

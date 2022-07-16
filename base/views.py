@@ -203,20 +203,25 @@ def cart(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'base/otc-products/cart.html', context)
 
-#CHECKOUT RENDER VIEW
+# CHECKOUT RENDER VIEW
 def checkout(request):
-	if request.user.is_authenticated:
-		customer = request.user.customer
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		items = order.orderitem_set.all()
-		cartItems = order.get_cart_items
-	else:
-		items=[]
-		order =  {'get_cart_total':0, 'get_cart_items':0}
-		cartItems = order['get_cart_items']
-		
-	context = {'items':items, 'order':order, 'cartItems':cartItems}
-	return render(request, 'base/otc-products/checkout.html', context)
+
+    if request.user.is_authenticated:
+    #if request.user.is_authenticated and user.is_customer:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        pickUp_Date = request.POST.get('pickUp_Date')
+
+    else:
+        items=[]
+        order =  {'get_cart_total':0, 'get_cart_items':0}
+        cartItems = order['get_cart_items']
+        
+    context = {'items':items, 'order':order, 'cartItems':cartItems, pickUp_Date:'pickUp_Date'}
+    #return render(request, 'base/otc-products/checkout.html', context)
+    return render(request, 'base/otc-products/cart.html', context)
 
 #PURCHASES RENDER VIEW
 def mypurchases(request):
@@ -237,7 +242,26 @@ def mypurchases(request):
 #SALES INVOICE RENDER VIEW
 def salesinvoice(request):
 	context = {}
-	return render(request, 'otc-products/salesinvoice.html', context)
+	return render(request, 'base/admin/salesinvoice.html', context)
+
+#APPROVE PRODUCT RESERVATION RENDER VIEW
+def approveprod(request):    
+    pickUp_Date = request.POST.get('pickUp_Date')
+    customer = request.user.customer #for getting name
+
+    prodreserv = Order.objects.get()
+    # items = order.orderitem_set.all()
+    # product = otcProduct.objects.get(id=productId)
+                    # CALL NI APPROVEPROD DEF SA HTML
+                    # date, name, products, quantity, total price
+    context = {'prodreserv': prodreserv, 'customer':customer, 'pickUp_Date':pickUp_Date}
+    return render(request, 'base/admin/approveprod.html', context)
+
+#TRANSACTION SUCCESSFUL RENDER VIEW
+def transactionsuccessful(request):
+	context = {}
+	return render(request, 'base/admin/transactionsuccessful.html', context)
+
 
 #UPDATE ITEM RENDER VIEW
 def updateItem(request):
@@ -264,6 +288,9 @@ def updateItem(request):
 		orderItem.delete()
 
 	return JsonResponse('Item was added', safe=False)
+
+
+
 
 '''def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
@@ -293,3 +320,4 @@ def updateItem(request):
 		)
 
 	return JsonResponse('Payment submitted..', safe=False)'''
+

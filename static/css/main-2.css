@@ -44,6 +44,10 @@ h2 {
 	border-style: solid;
 	border-color: var(--lgray);
 	border-width: thin;
+	
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 }
 
 .box-element{
@@ -135,7 +139,7 @@ h2 {
 	font-size: large;
 	color: white;
 	text-align: center;
-	font-weight: 700;
+	font-weight: 500;
 	border: none;
 	padding: .8em;
 	border-radius: .3em;
@@ -157,7 +161,7 @@ h2 {
 	font-size: large;
 	color: white;
 	text-align: center;
-	font-weight: 700;
+	font-weight: 500;
 	border: none;
 	padding: .8em;
 	border-radius: .3em;
@@ -197,7 +201,7 @@ h2 {
 .cart-row{
 	/* FONT */
 	font-size: medium;
-	font-weight: 600;
+	font-weight: 500;
 	/* FLEX */
     align-items: flex-stretch;
 	display: flex;
@@ -255,7 +259,7 @@ h2 {
 .cart-row-3{
 	/* FONT */
 	font-size: medium;
-	font-weight: 600;
+	font-weight: 500;
 	/* FLEX */
     align-items: flex-stretch;
 	display: flex;
@@ -275,7 +279,7 @@ h2 {
 .cart-row-4{
 	/* FONT */
 	font-size: medium;
-	font-weight: 600;
+	font-weight: 500;
 	/* FLEX */
     align-items: flex-stretch;
 	display: flex;
@@ -288,7 +292,7 @@ h2 {
 .cart-row-5{
 	/* FONT */
 	font-size: medium;
-	font-weight: 600;
+	font-weight: 500;
 	/* FLEX */
     align-items: flex-stretch;
 	display: flex;

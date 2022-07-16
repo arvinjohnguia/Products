@@ -119,7 +119,7 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=True, blank=False)
     transaction_id = models.CharField(max_length=200, null=True)
-    pickUp_Date = models.DateTimeField(null=True, blank=False, verbose_name="Pickup Date")
+    pickUp_Date = models.DateField(null=True, blank=False, verbose_name="Pickup Date")
     pickupstat = models.ForeignKey(PickupStatus, on_delete=models.SET_NULL, blank=False, null=True)
 
     def __str__(self):

@@ -35,9 +35,15 @@ urlpatterns = [
     #MY PURCHASES
 	path('mypurchases/', views.mypurchases, name="mypurchases"),
 
-    #SALES INVOICE NA WALA PA
+    #SALES INVOICE 
 	path('salesinvoice/', views.salesinvoice, name="salesinvoice"),
 
+    #APPROVE PRODUCT RESERVATION
+	path('approveprod/', views.approveprod, name="approveprod"),
+
+    #TRANSACTION SUCCESSFUL
+	path('transactionsuccessful/', views.transactionsuccessful, name="transactionsuccess"),
+    
 		#JSON Response
 	path('update_item/', views.updateItem, name="update_item"),
 	#path('process_order/', views.processOrder, name="process_order"),
