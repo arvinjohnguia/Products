@@ -10,6 +10,7 @@ class IsActiveManager(models.Manager):
 
         return super(IsActiveManager, self).get_queryset().filter(is_active=True)
 
+#PRODUCT CATEGORY (SHAMPOO ETC)
 class Category(models.Model):
     Cat_Name = models.CharField(max_length=200, unique=True)
 
@@ -20,6 +21,7 @@ class Category(models.Model):
     def __str__(self):
         return self.Cat_Name
 
+#IN-SALON OR OTC PRODUCTS
 class ProductType(models.Model):
     ProdType_Name = models.CharField(max_length=200, verbose_name="Product Type", unique=True)
 
@@ -101,12 +103,24 @@ class Customer(models.Model):
             url = ''
         return url
 '''
+#PRODUCT PICKUP
+class PickupStatus(models.Model):
+    pickup_status = models.CharField(max_length=200, unique=True)
+
+    class Meta:
+        verbose_name = 'Product Pickup Status'
+        verbose_name_plural = 'Product Pickup Statuses'
+
+    def __str__(self):
+        return self.pickup_status
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=True, blank=False)
     transaction_id = models.CharField(max_length=200, null=True)
+    pickUp_Date = models.DateTimeField(null=True, blank=False, verbose_name="Pickup Date")
+    pickupstat = models.ForeignKey(PickupStatus, on_delete=models.SET_NULL, blank=False, null=True)
 
     def __str__(self):
         return str(self.id)
@@ -135,27 +149,6 @@ class OrderItem(models.Model):
         return total
 
 # PRODUCT PICKUP
-class Checkout(models.Model):
-    cname = 
-
-class PickupStatus(models.Model):
-    pickup_status = models.CharField(max_length=200, unique=True)
-
-    class Meta:
-        verbose_name = 'Product Pickup Status'
-        verbose_name_plural = 'Product Pickup Statuses'
-
-    def __str__(self):
-        return self.pickup_status
-    
-class ProductPickup(models.Model):
-    product = models.ForeignKey(otcProduct, on_delete=models.SET_NULL, blank=False, null=True)
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=False, null=True)
-    pickupstat = models.ForeignKey(PickupStatus, blank=False, null=True)
-    pickUp_Date = models.DateTimeField(null=True, blank=False, verbose_name="Pickup Date")
-    pickUpProd_Qty = models.IntegerField(verbose_name="Pickup Product Quantity")
-
-
 class SalesInvoice(models.Model):
-    product_pickup = models.ForeignKey(ProductPickup, blank=False, null=True)
+    product_pickupID = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=False, null=True)
     amount_total = models.DecimalField(decimal_places=2, max_digits=6, verbose_name="Total Price")
