@@ -220,8 +220,8 @@ def checkout(request):
         cartItems = order['get_cart_items']
         
     context = {'items':items, 'order':order, 'cartItems':cartItems, pickUp_Date:'pickUp_Date'}
-    #return render(request, 'base/otc-products/checkout.html', context)
-    return render(request, 'base/otc-products/cart.html', context)
+    return render(request, 'base/otc-products/checkout.html', context)
+    #return render(request, 'base/otc-products/cart.html', context)
 
 #PURCHASES RENDER VIEW
 def mypurchases(request):
